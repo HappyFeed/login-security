@@ -13,5 +13,6 @@
       <Label layoutX="34.0" layoutY="179.0" text="Password" />
       <PasswordField fx:id="passText" layoutX="103.0" layoutY="175.0" />
       <TextField fx:id="userText" layoutX="104.0" layoutY="80.0" prefHeight="25.0" prefWidth="149.0" />
+      <Label fx:id="advertenciaText" layoutX="126.0" layoutY="32.0" text="El usuario no existe" textFill="RED" />
    </children>
 </Pane>

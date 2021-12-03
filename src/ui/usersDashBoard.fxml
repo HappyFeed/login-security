@@ -5,11 +5,11 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="315.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.UserController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="315.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.UserController">
    <children>
       <Label fx:id="labelError" layoutX="25.0" layoutY="186.0" prefHeight="28.0" prefWidth="238.0" text="Es la misma contraseña" textFill="#eb0404" />
       <TextField fx:id="textFechaAccesp" editable="false" layoutX="23.0" layoutY="51.0" prefHeight="28.0" prefWidth="238.0" />
@@ -18,6 +18,9 @@
       <PasswordField fx:id="textNewPassword" layoutX="25.0" layoutY="158.0" prefHeight="25.0" prefWidth="238.0" />
       <Button fx:id="buttonSave" layoutX="25.0" layoutY="224.0" mnemonicParsing="false" onAction="#saveNewPassword" text="Guardar" />
       <Label layoutX="23.0" layoutY="23.0" prefHeight="28.0" prefWidth="152.0" text="Ultimo acceso" />
-      <ImageView fx:id="imagePanel" fitHeight="112.0" fitWidth="279.0" layoutX="20.0" layoutY="274.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imagePanel" fitHeight="208.0" fitWidth="307.0" layoutX="54.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/user.png" />
+         </image></ImageView>
    </children>
 </Pane>

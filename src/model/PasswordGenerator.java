@@ -1,6 +1,14 @@
 package model;
 
-public static class PasswordGenerator {
+import java.math.BigInteger;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
+
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
+
+public class PasswordGenerator {
 
     public PasswordGenerator() {
 
@@ -8,7 +16,7 @@ public static class PasswordGenerator {
 
     public static String generateStrongPasswordHash(String password)
             throws NoSuchAlgorithmException, InvalidKeySpecException {
-        int iterations = 1000;
+        int iterations = 2000;
         char[] chars = password.toCharArray();
         byte[] salt = getSalt();
 
@@ -59,7 +67,7 @@ public static class PasswordGenerator {
             return diff == 0;
 
         } catch (NumberFormatException e) {
-            log.error("NumberFormatException validando contraseña");
+            System.out.println("NumberFormatException validando contraseña");
             return false;
         }
     }

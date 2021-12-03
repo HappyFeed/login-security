@@ -1,5 +1,34 @@
 package ui;
 
-public class Main {
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import model.PasswordGenerator;
+
+public class Main extends Application{
+	
+	
+
+    public static Stage stage;
+
+	public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeySpecException {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception {
+    	
+    	Main.stage= new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("usersDashBoard.fxml"));
+
+        Scene scene = new Scene(root);
+        Main.stage.setTitle("Login Security");
+        Main.stage.setScene(scene);
+        Main.stage.show();
+    }
 }

@@ -29,5 +29,12 @@ public class UserController {
     void saveNewPassword(ActionEvent event) {
 
     }
+    
+    @FXML
+    void initialize() {
+    	
+    	labelError.setVisible(false);
+    	
+    }
 
 }
