@@ -1,0 +1,7 @@
+CREATE TABLE users (
+	idUser SERIAL PRIMARY KEY,
+	userName VARCHAR(50) NOT NULL,
+	userPassword VARCHAR(20) NOT NULL,
+	userPrivilege BOOLEAN NOT NULL,
+	lastLogin TIMESTAMP NOT NULL
+)

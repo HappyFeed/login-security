@@ -24,7 +24,7 @@ public class Main extends Application{
     public void start(Stage stage) throws Exception {
     	
     	Main.stage= new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("usersDashBoard.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
 
         Scene scene = new Scene(root);
         Main.stage.setTitle("Login Security");
