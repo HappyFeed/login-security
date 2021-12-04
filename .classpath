@@ -10,5 +10,6 @@
 		</accessrules>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jre8"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

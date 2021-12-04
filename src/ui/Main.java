@@ -17,7 +17,13 @@ public class Main extends Application{
     public static Stage stage;
 
 	public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        launch(args);
+        System.out.println(PasswordGenerator.generateStrongPasswordHash("123456"));
+        System.out.println(PasswordGenerator.generateStrongPasswordHash("654321"));
+        System.out.println(PasswordGenerator.generateStrongPasswordHash("123123"));
+        System.out.println(PasswordGenerator.generateStrongPasswordHash("456456"));
+        
+		launch(args);
+        
     }
 
     @Override

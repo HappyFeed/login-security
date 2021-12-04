@@ -6,7 +6,7 @@ public class Conexion {
 	
 	public static Connection obtenerConexion() {
 		
-		String url = "jdbc:sqlserver://localhost:1433;"
+		String url = "jdbc:sqlserver://localhost:1434;"
 				+"database=login-security;"
 				+"user=sa;"
 				+"password=1234;";

@@ -36,7 +36,7 @@ public class LoginController {
     	String user = userText.getText();
     	String pass = passText.getText();
     	
-    	String consulta = "SELECT userName, userPassword, privilege FROM USERS WHERE userName = '"+user+"'";
+    	String consulta = "SELECT userName, password, privilege FROM usuario WHERE userName = '"+user+"'";
     
     	try {
     	
@@ -48,12 +48,12 @@ public class LoginController {
     		if (rs.next()) {
     			
     			//String userBD = rs.getString("userName");
-    			String passBD = rs.getString("userPassword");
-    			Boolean privi = rs.getBoolean("privilege");
+    			String passBD = rs.getString("password");
+    			String privi = rs.getString("privilege");
     			
     			if (PasswordGenerator.validatePassword(pass, passBD)) {
     				
-    				if (privi) {
+    				if (privi.equals("admin")) {
     					
     					nextToStageAdmin();
 						

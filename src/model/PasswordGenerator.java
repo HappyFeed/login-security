@@ -48,6 +48,7 @@ public class PasswordGenerator {
     public static boolean validatePassword(String originalPassword, String storedPassword)
             throws NoSuchAlgorithmException, InvalidKeySpecException {
         try {
+        	System.out.println(storedPassword);
             String[] parts = storedPassword.split(":");
             int iterations = Integer.parseInt(parts[0]);
             byte[] salt = fromHex(parts[1]);
@@ -73,7 +74,6 @@ public class PasswordGenerator {
     }
 
     private static byte[] fromHex(String hex) {
-
         byte[] bytes = new byte[hex.length() / 2];
         for (int i = 0; i < bytes.length; i++) {
             bytes[i] = (byte) Integer.parseInt(hex.substring(2 * i, 2 * i + 2), 16);
