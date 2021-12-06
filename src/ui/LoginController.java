@@ -9,10 +9,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.stage.StageStyle;
 import model.Conexion;
 import model.PasswordGenerator;
 
@@ -47,19 +50,27 @@ public class LoginController {
     		//Con esto verificamos si el usuario existe en la base de datos
     		if (rs.next()) {
     			
-    			//String userBD = rs.getString("userName");
+    			String userBD = rs.getString("userName");
     			String passBD = rs.getString("password");
+    			if(passBD.equals("")) {
+    				rs.close();
+					ps.close();
+					con.close();
+    				throw new NullPointerException();
+    			}
     			String privi = rs.getString("privilege");
     			
     			if (PasswordGenerator.validatePassword(pass, passBD)) {
-    				
+    				rs.close();
+					ps.close();
+					con.close();
     				if (privi.equals("admin")) {
     					
     					nextToStageAdmin();
 						
 					}else {
 						
-						nextToStageUser();
+						nextToStageUser(userBD);
 						
 					}
 					
@@ -67,6 +78,9 @@ public class LoginController {
 					
 					advertenciaText.setText("Wrong Password");
 					advertenciaText.setVisible(true);
+					rs.close();
+					ps.close();
+					con.close();
 				}
     	
 		
@@ -76,10 +90,22 @@ public class LoginController {
 		
     		}
     
+    	} catch (NullPointerException n) {
+    		alert();
+    		
     	} catch (/*SQLException | NoSuchAlgorithmException | InvalidKeySpecException */ Exception ex) {
     		System.out.println(ex.toString());
     	}
 
+    }
+    
+    void alert() {
+    	Alert info = new Alert(AlertType.INFORMATION);
+        info.setTitle("Information");
+        info.setHeaderText(null);
+        info.initStyle(StageStyle.UTILITY);
+        info.setContentText("Tu contraseña fue eliminada por el administrador");
+        info.show();
     }
     
     @FXML
@@ -104,10 +130,12 @@ public class LoginController {
     }
     
    
-    void nextToStageUser() {
+    void nextToStageUser(String user) {
         try {
             FXMLLoader loader= new FXMLLoader(getClass().getResource("usersDashBoard.fxml"));
             Parent root=loader.load();
+            UserController scc= (UserController) loader.getController();         
+            scc.recibirUser(user);
             Scene scene = new Scene(root);
             Main.stage.setScene(scene);
         } catch (IOException e) {
