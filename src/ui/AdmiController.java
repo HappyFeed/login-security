@@ -1,6 +1,7 @@
 package ui;
 
 import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,6 +19,9 @@ import javafx.scene.image.ImageView;
 import javafx.stage.StageStyle;
 import model.Conexion;
 
+/**
+ * Clase controladora de la ventana del administrador.
+ */
 public class AdmiController {
 	
 	 public static final String PATH = "img/admi.png";
@@ -38,6 +42,14 @@ public class AdmiController {
     
     private PreparedStatement ps;
 
+    /**
+     * Método que elimina a un usuario.
+     * 
+     * @param event Cuando se presiona el botón eliminar
+     * 
+     * @throws NullPointerException
+     * @throws SQLException
+     */
     @FXML
     void deleteUser(ActionEvent event) {
     	try {
@@ -56,6 +68,14 @@ public class AdmiController {
 		}
     }
 
+    /**
+     * Método que elimina la contraseña de un usuario.
+     * 
+     * @param event Cuando se presiona el botón setPassword
+     * 
+     * @throws NullPointerException
+     * @throws SQLException
+     */
     @FXML
     void setUserPassword(ActionEvent event) {
     	try {
@@ -73,6 +93,9 @@ public class AdmiController {
 		}
     }
     
+    /**
+     * Método genera una alerta.
+     */
     void alert() {
     	Alert info = new Alert(AlertType.INFORMATION);
         info.setTitle("Information");
@@ -82,6 +105,11 @@ public class AdmiController {
         info.show();
     }
     
+    /**
+     * Método que conecta la aplicación a la base de datos.
+     * 
+     * @throws IOException
+     */
     void conect() {
     	String consulta = "SELECT userName FROM usuario WHERE privilege = 'normal'";
     	comboBoxUsers.getItems().clear();
@@ -99,6 +127,11 @@ public class AdmiController {
 		}
     }
     
+    /**
+     * Método que actualiza la lista de usuarios.
+     * 
+     * @throws SQLException
+     */
     void updateCombo() {
     	String consulta = "SELECT userName FROM usuario WHERE privilege = 'normal'";
     	comboBoxUsers.getItems().clear();
@@ -116,6 +149,9 @@ public class AdmiController {
 		
     }
     
+    /**
+     * Método que inicializa la ventana.
+     */
     @FXML
     void initialize() {
 		conect();

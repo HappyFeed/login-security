@@ -8,12 +8,22 @@ import java.security.spec.InvalidKeySpecException;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
+/**
+ * Clase encargada de las contraseñas ysu cifrado.
+ */
 public class PasswordGenerator {
 
     public PasswordGenerator() {
 
     }
 
+    /**
+     * Método que genera una contraseña cifrada para el usuario.
+     * 
+     * @param password Contraseña proporcionada para cifrar
+     * 
+     * @return String Iteraciones realizadas con el codigo salt generado y el hash
+     */
     public static String generateStrongPasswordHash(String password)
             throws NoSuchAlgorithmException, InvalidKeySpecException {
         int iterations = 2000;
@@ -27,6 +37,13 @@ public class PasswordGenerator {
         return iterations + ":" + toHex(salt) + ":" + toHex(hash);
     }
 
+    /**
+     * Método que genera un código aleatorio para cada contraseña.
+     * 
+     * @throws NoSuchAlgorithmException
+     * 
+     * @return salt Codigo generado para la contraseña
+     */
     private static byte[] getSalt() throws NoSuchAlgorithmException {
         SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
         byte[] salt = new byte[16];
@@ -34,6 +51,13 @@ public class PasswordGenerator {
         return salt;
     }
 
+    /**
+     * Método que convierte a hexadecimal.
+     * 
+     * @param array Bytes a convertir
+     * 
+     * @return hex String convertido a hexadecimal
+     */
     private static String toHex(byte[] array) {
         BigInteger bi = new BigInteger(1, array);
         String hex = bi.toString(16);
@@ -45,6 +69,16 @@ public class PasswordGenerator {
         }
     }
 
+    /**
+     * Método que valida la contraseña.
+     * 
+     * @param originalPassword Contraseña proporcionada
+     * @param storedPassword Contraseña que se encuentra en la base de datos
+     * 
+     * @throws NumberFormatException
+     * 
+     * @return diff Bollean verdadero si las contraseñas son iguales
+     */
     public static boolean validatePassword(String originalPassword, String storedPassword)
             throws NoSuchAlgorithmException, InvalidKeySpecException {
         try {
@@ -73,6 +107,13 @@ public class PasswordGenerator {
         }
     }
 
+    /**
+     * Método que convierte desde hexadecimal a decimal.
+     * 
+     * @param hex String a convertir
+     * 
+     * @return bytes Bytes convertidos a decimal
+     */
     private static byte[] fromHex(String hex) {
         byte[] bytes = new byte[hex.length() / 2];
         for (int i = 0; i < bytes.length; i++) {

@@ -19,6 +19,9 @@ import javafx.stage.StageStyle;
 import model.Conexion;
 import model.PasswordGenerator;
 
+/**
+ * Clase controladora del login.
+ */
 public class LoginController {
 	
 	@FXML
@@ -33,6 +36,14 @@ public class LoginController {
     @FXML
     private TextField userText;
 
+    /**
+     * Método que realiza el login de un usuario.
+     * 
+     * @param event Cuando se presiona el botón login
+     * 
+     * @throws NullPointerException
+     * @throws Exception
+     */
     @FXML
     void tryLogin(ActionEvent event) {
     	
@@ -99,6 +110,9 @@ public class LoginController {
 
     }
     
+    /**
+     * Método genera una alerta.
+     */
     void alert() {
     	Alert info = new Alert(AlertType.INFORMATION);
         info.setTitle("Information");
@@ -108,6 +122,9 @@ public class LoginController {
         info.show();
     }
     
+    /**
+     * Método que inicializa la ventana.
+     */
     @FXML
     void initialize() {
     	
@@ -115,7 +132,11 @@ public class LoginController {
     	
     }
     
-   
+    /**
+     * Método que abre la ventana del administrador.
+     * 
+     * @throws IOException
+     */
     void nextToStageAdmin() {
         try {
             FXMLLoader loader= new FXMLLoader(getClass().getResource("admiDashBoard.fxml"));
@@ -129,7 +150,13 @@ public class LoginController {
 
     }
     
-   
+    /**
+     * Método que abre la ventana del usuario común.
+     * 
+     * @param user Nombre del usuario que hace login
+     * 
+     * @throws IOException
+     */
     void nextToStageUser(String user) {
         try {
             FXMLLoader loader= new FXMLLoader(getClass().getResource("usersDashBoard.fxml"));

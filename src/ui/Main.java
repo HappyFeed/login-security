@@ -10,12 +10,20 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.PasswordGenerator;
 
+/**
+ * Clase main de la aplicación.
+ */
 public class Main extends Application{
 	
 	
 
     public static Stage stage;
 
+    /**
+     * Método que imprime las contraseñas cifradas de los usuarios.
+     * 
+     * @param args Argumentos del programa
+     */
 	public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeySpecException {
         System.out.println(PasswordGenerator.generateStrongPasswordHash("123456"));
         System.out.println(PasswordGenerator.generateStrongPasswordHash("654321"));
@@ -26,6 +34,11 @@ public class Main extends Application{
         
     }
 
+	 /**
+     * Método que inicia la ventana login.
+     * 
+     * @param stage
+     */
     @Override
     public void start(Stage stage) throws Exception {
     	

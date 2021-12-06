@@ -2,8 +2,16 @@ package model;
 
 import java.sql.*;
 
+/**
+ * Clase encargada de la conexión.
+ */
 public class Conexion {
 	
+	/**
+     * Método realiza la conexion con la base de datos.
+     * 
+     * @throws SQLException
+     */
 	public static Connection obtenerConexion() {
 		
 		String url = "jdbc:sqlserver://localhost:1434;"
