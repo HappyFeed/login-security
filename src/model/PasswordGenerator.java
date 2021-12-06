@@ -10,6 +10,8 @@ import javax.crypto.spec.PBEKeySpec;
 
 /**
  * Clase encargada de las contraseñas ysu cifrado.
+ * 
+ * tomada de https://trellat.es/encriptacion-de-contrasenas-con-pbkdf2-en-java/
  */
 public class PasswordGenerator {
 
